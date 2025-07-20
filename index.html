@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Birthday Invitation</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: url('flowers-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+
+    /* Carousel */
+    .carousel,
+    .carousel-inner,
+    .carousel-item {
+      height: 100vh;
+    }
+
+    .carousel-item img {
+      height: 100vh;
+      width: 100%;
+      object-fit: cover;
+      filter: brightness(0.6);
+    }
+
+    .carousel-caption {
+      bottom: 20%;
+    }
+
+    .carousel-caption h5 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .carousel-caption p {
+      font-size: 1.3rem;
+    }
+
+    /* Invitation Card */
+    .invite-card {
+      background-color: rgba(128, 0, 32, 0.85); /* Burgundy with transparency */
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 800px;
+      margin: 40px auto;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.4);
+      color: #fff;
+      text-align: center;
+    }
+
+    .invite-card h2 {
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .invite-card p {
+      margin: 5px 0;
+    }
+
+    /* Countdown */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+      font-size: 1.5rem;
+    }
+
+    .countdown div {
+      text-align: center;
+    }
+
+    .countdown span {
+      display: block;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+
+    @media (max-width: 576px) {
+      .carousel-caption h5 {
+        font-size: 1.6rem;
+      }
+
+      .carousel-caption p {
+        font-size: 1rem;
+      }
+
+      .countdown {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Carousel -->
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="WhatsApp Image 2025-07-20 at 16.06.09_bdcec724.jpg" class="d-block w-100" alt="Slide 1">
+      <div class="carousel-caption">
+        <h5>HAPPY</h5>
+        <p>Come join us and celebrate</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="WhatsApp Image 2025-07-20 at 16.06.08_58ffabae.jpg" class="d-block w-100" alt="Slide 2">
+      <div class="carousel-caption">
+        <h5>50TH</h5>
+        <p>A golden milestone, let’s toast to life.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="WhatsApp Image 2025-07-20 at 16.06.09_39051c8f.jpg" class="d-block w-100" alt="Slide 3">
+      <div class="carousel-caption">
+        <h5>BIRTHDAY</h5>
+        <p>You’re invited to make memories together.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  </button>
+</div>
+
+<!-- Invitation Card -->
+<section class="invite-card">
+  <h2>You’re Invited To Ednah's 50th Birthday Celebration!!</h2>
+  <br>
+  <p><strong>Date:</strong> September 06, 2025</p>
+  <p><strong>Time:</strong> 12:00 PM-18:00 PM</p>
+  <p><strong>Venue:</strong> Avani , Gaborone</p>
+  <p><strong>Dress Code:</strong> Shades of Burgundy</p>
+  <p><strong>RSVP:</strong> +267 72493578</p>
+  <div class="countdown" id="countdown">
+    <div><span id="days">--</span>Days</div>
+    <div><span id="hours">--</span>Hours</div>
+    <div><span id="minutes">--</span>Minutes</div>
+    <div><span id="seconds">--</span>Seconds</div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Countdown Script
+  const eventDate = new Date("September 06, 2025 12:00:00").getTime();
+
+  const countdown = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    if (distance < 0) {
+      clearInterval(countdown);
+      document.getElementById("countdown").innerHTML = "<p>It's Party Time!</p>";
+    } else {
+      document.getElementById("days").textContent = Math.floor(distance / (1000 * 60 * 60 * 24));
+      document.getElementById("hours").textContent = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      document.getElementById("minutes").textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      document.getElementById("seconds").textContent = Math.floor((distance % (1000 * 60)) / 1000);
+    }
+  }, 1000);
+</script>
+</body>
+</html>
+
+<!-- RSVP SECTION -->
+<section class="invite-card" style="background-color: rgba(128, 0, 32, 0.1); padding: 40px 20px;">
+  <div class="container text-center">
+    <h2 class="mb-4" style="color: #800020;">Kindly RSVP</h2>
+    <div class="ratio ratio-4x3" style="max-width: 800px; margin: 0 auto;">
+      <iframe 
+        src="https://docs.google.com/forms/d/e/1FAIpQLScaKTU3t31nLUsC7d29LsrU8ljP38xiAo3SRYCS6oWPFRHwfg/viewform?embedded=true" 
+        width="100%" 
+        height="800" 
+        frameborder="0" 
+        marginheight="0" 
+        marginwidth="0"
+        loading="lazy">
+        Loading…
+      </iframe>
+    </div>
+  </div>
+</section>
